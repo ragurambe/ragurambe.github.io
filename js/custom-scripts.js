@@ -196,12 +196,15 @@
     $(document).on('scroll', function() {
       var activeClass = 'navbar-home',
           ActiveID        = '.main-navbar-top',
+          ActiveIDSub     = ".navbar-collapse",
           scrollPos       = $(this).scrollTop();
 
-      if( scrollPos > ( $('.home-section').height() - 80 ) ) {
+      if( scrollPos > ( $('.home-section').height() - 600 ) ) {
         $( ActiveID ).addClass( activeClass );
       } else {
         $( ActiveID ).removeClass( activeClass );
+        $( ActiveIDSub ).removeClass( "show-nav" );
+        $( "button.nav-trigger" ).removeClass("nav-visible");
       }
     });
 
@@ -336,7 +339,7 @@
 
     /**
      * =============================================
-     * Services Detail Back 3
+     * Category Detail Back 3
      * =============================================
      */
     var servicesBackButton = $('.btn-services-back');
@@ -368,90 +371,6 @@
 
 
     /**
-     * ===============================================
-     * Project Slider and Project Detail Initial style
-     * ===============================================
-     */
-    $('.section-item').each(function() {
-
-      $( this ).find('.slider').fadeOut(10);
-      $( this ).find('.project-detail').fadeOut(10);
-
-    });
-
-
-
-    /**
-     * =============================================
-     * Project Slider and Project Detail Show Button
-     * =============================================
-     */
-    var sliderButton      = $('.btn-slider, .btn-project-detail');
-    sliderButton.on('click', function(el) {
-      el.preventDefault();
-
-      var mainSectionId   = $( $(this).closest('.porifolio-section') ),
-          dataElement     = $(this).attr('data-element'),
-          dataHeading     = '.each-portfolio-heading',
-          sliderId        = mainSectionId.find('.slider'),
-          projectDetailId = mainSectionId.find('.project-detail'),
-          imageId         = mainSectionId.find('.image');
-
-      mainSectionId.find( dataHeading ).addClass('no-heading');
-
-      setTimeout(function() {
-
-        if( dataElement === 'slider' ){
-          sliderId.fadeIn(100);
-          sliderId.closest('.slider-outer').css( 'z-index', 111 );
-          sliderId.addClass('active-section');
-        }else if( dataElement === 'project-detail' ){
-          projectDetailId.fadeIn(100);
-          projectDetailId.closest('.project-detail-outer').css( 'z-index', 111 );
-          projectDetailId.addClass('active-section');
-        }
-
-      }, 600 );
-
-      imageId.fadeOut(600);
-    });
-
-
-
-    /**
-     * =============================================
-     * Project Slider and Project Detail Back Button
-     * =============================================
-     */
-    var sliderBackButton = $('.btn-slider-back, btn-project-detail-back');
-    sliderBackButton.on('click', function(el) {
-      el.preventDefault();
-
-      var mainSectionId   = $( $(this).closest('.porifolio-section') ),
-          dataHeading     = '.each-portfolio-heading',
-          sliderId        = mainSectionId.find('.slider'),
-          projectDetailId = mainSectionId.find('.project-detail'),
-          imageId         = mainSectionId.find('.image');
-
-      sliderId.removeClass('active-section');
-      projectDetailId.removeClass('active-section');
-      
-      setTimeout(function() {
-        imageId.fadeIn(600);
-        sliderId.fadeOut(100);
-        projectDetailId.fadeOut(100);
-        mainSectionId.find( dataHeading ).removeClass('no-heading');
-        sliderId.closest('.slider-outer').css( 'z-index', -111 );
-        projectDetailId.closest('.project-detail-outer').css( 'z-index', -111 );
-      }, 200 );
-
-      
-    });
-
-
-
-
-    /**
      * =======================================
      * Portfolio Wrapper Slider
      * =======================================
@@ -480,48 +399,6 @@
         .addClass('active');
      }
     });
-
-
-
-
-    /**
-     * =======================================
-     * Image Slider
-     * =======================================
-     */
-    var imageSlider = $(".project-slider"); // client's message
-    imageSlider.owlCarousel({
-      singleItem :        true,
-      slideSpeed :        500,
-      paginationSpeed :   500,
-      autoHeight :        false,
-      navigation:         true,
-      pagination:         true,
-      transitionStyle:    "fade"
-    });
-
-
-
-
-    /**
-     * =======================================
-     * TESTIMONIAL SYNC WITH CLIENTS
-     * =======================================
-     */
-    var testimonialSlider = $(".testimonial-wrapper"); // client's message
-    testimonialSlider.owlCarousel({
-      singleItem :        true,
-      autoPlay :          3000,
-      slideSpeed :        500,
-      paginationSpeed :   500,
-      autoHeight :        false,
-      navigation:         false,
-      pagination:         true,
-      // transitionStyle:    "fade"
-    });
-
-
-
 
 
     /**
