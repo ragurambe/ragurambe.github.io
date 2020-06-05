@@ -362,6 +362,8 @@ section.section {
   height: 100%;
   left: 0;
   top: 0;
+  background: rgb(49, 167, 0);
+  background: radial-gradient(#31a700 0%, rgba(223, 240, 216, 0) 75%);
 }
 .overlay-color-full {
   position: relative;
@@ -1022,13 +1024,15 @@ section.section {
 .white-background {
   background-color: #ffffff;
 }
-.dark-background#about-section{
+.dark-background#about-section {
   background-color: #4db920ab;
 }
-.semi-dark-background p, .semi-dark-background a.btn{
+.semi-dark-background p,
+.semi-dark-background a.btn {
   color: #31a700;
 }
-.dark-background p, .dark-background a.btn{
+.dark-background p,
+.dark-background a.btn {
   color: #dff0d8;
 }
 /**
@@ -1669,21 +1673,50 @@ section.section {
   /* Features Detail text Style */
   /* Features Button Style */
 }
-.semi-dark-background .categories-section .each-services .each-services-inner .features-icon,
-.semi-dark-background .categories-section .each-services .each-services-inner .title,
-.semi-dark-background .categories-section .each-services .each-services-inner p{
+.semi-dark-background
+  .categories-section
+  .each-services
+  .each-services-inner
+  .features-icon,
+.semi-dark-background
+  .categories-section
+  .each-services
+  .each-services-inner
+  .title,
+.semi-dark-background
+  .categories-section
+  .each-services
+  .each-services-inner
+  p {
   color: #31a700;
 }
-.dark-background .categories-section .each-services .each-services-inner .features-icon,
+.dark-background
+  .categories-section
+  .each-services
+  .each-services-inner
+  .features-icon,
 .dark-background .categories-section .each-services .each-services-inner .title,
 .dark-background .categories-section .each-services .each-services-inner p,
-.dark-background .categories-section .each-services .each-services-inner .btn .icon{
+.dark-background
+  .categories-section
+  .each-services
+  .each-services-inner
+  .btn
+  .icon {
   color: #dff0d8;
 }
-.semi-dark-background .categories-section .each-services .each-services-inner .features-icon {
+.semi-dark-background
+  .categories-section
+  .each-services
+  .each-services-inner
+  .features-icon {
   font-size: 20px;
 }
-.dark-background .categories-section .each-services .each-services-inner .features-icon {
+.dark-background
+  .categories-section
+  .each-services
+  .each-services-inner
+  .features-icon {
   font-size: 20px;
 }
 .categories-section .each-services .each-services-inner .title-outer {
@@ -1708,10 +1741,20 @@ section.section {
 .categories-section .each-services .each-services-inner .btn-form {
   margin-top: 0px;
 }
-.semi-dark-background .categories-section .each-services .each-services-inner .btn .icon {
+.semi-dark-background
+  .categories-section
+  .each-services
+  .each-services-inner
+  .btn
+  .icon {
   color: #31a700 !important;
 }
-.dark-background .categories-section .each-services .each-services-inner .btn .icon{
+.dark-background
+  .categories-section
+  .each-services
+  .each-services-inner
+  .btn
+  .icon {
   color: #dff0d8 !important;
 }
 /**
@@ -1844,7 +1887,7 @@ section.section {
  * About Section Style
  * ========================================
  */
- .about-section {
+.about-section {
   min-height: 650px;
 }
 .about-section .each-services .each-services-inner {
@@ -1913,7 +1956,7 @@ section.section {
 .about-section .each-services .each-services-inner .btn .icon {
   color: #31a700 !important;
 }
-.about-img{
+.about-img {
   width: 100%;
   box-shadow: 0px 1px 10px #ddc179;
 }
@@ -2237,7 +2280,7 @@ section.section {
   background-position: 50% 50%;
   background-attachment: initial;
   background-repeat: no-repeat;
-  background-color: #171717;
+  /* background-color: #171717; */
 }
 .contact-us .single-form-outer {
   padding: 15px;
@@ -2394,6 +2437,9 @@ section.section {
   -webkit-perspective: 1000;
   perspective: 1000;
 }
+.team-member .each-item:hover .profile-image {
+  widows: 30px;
+}
 .team-member .each-item .profile-image img {
   border-radius: 50%;
   margin: auto;
@@ -2505,8 +2551,9 @@ section.section {
   white-space: nowrap;
 }
 .team-member .each-item:hover .profile-outer {
-  left: -23px;
+  left: -30px;
   top: 0;
+  width: 117px;
   -o-transform: translate3d(15px, 15px, 0);
   -ms-transform: translate3d(15px, 15px, 0);
   -moz-transform: translate3d(15px, 15px, 0);
