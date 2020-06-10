@@ -1,5 +1,5 @@
-(function($) {
-    
+(function ($) {
+
   'use strict';
 
 
@@ -8,14 +8,14 @@
    * Function for windows height and width      
    * =====================================
    */
-  function windowSize( el ) {
+  function windowSize(el) {
     var result = 0;
-    if("height" == el)
-        result = window.innerHeight ? window.innerHeight : $(window).height();
-    if("width" == el)
+    if ("height" == el)
+      result = window.innerHeight ? window.innerHeight : $(window).height();
+    if ("width" == el)
       result = window.innerWidth ? window.innerWidth : $(window).width();
 
-    return result; 
+    return result;
   }
 
 
@@ -36,29 +36,29 @@
    * Function: Home Section Fullscreen View.
    * =======================================
    */
-  var fullscreen_home = function( id ) {
+  var fullscreen_home = function (id) {
 
-    var mainSection     = $( id ),
-        paddingSection  = mainSection.find(".inner-container"),
-        windowWidth     = windowSize('width'),
-        windowHeight    = windowSize('height')
+    var mainSection = $(id),
+      paddingSection = mainSection.find(".inner-container"),
+      windowWidth = windowSize('width'),
+      windowHeight = windowSize('height')
 
-    if( windowWidth >= 767 && windowHeight >= ( paddingSection.height() + 170*2) ) {
+    if (windowWidth >= 767 && windowHeight >= (paddingSection.height() + 170 * 2)) {
 
       mainSection.css({
         'height': windowHeight + "px",
         'position': 'relative'
       });
 
-      var top     = Math.max( (windowHeight / 2) - ( paddingSection.height() / 2), 0),
-          PTop    = 0, 
-          PBottom = 0;
+      var top = Math.max((windowHeight / 2) - (paddingSection.height() / 2), 0),
+        PTop = 0,
+        PBottom = 0;
 
-      if(top == Math.round(top)) {
+      if (top == Math.round(top)) {
         PTop = PBottom = top;
       }
       else {
-        PTop    = Math.round(top)-1;
+        PTop = Math.round(top) - 1;
         PBottom = Math.round(top);
       }
 
@@ -89,10 +89,10 @@
    * =====================================
    */
   function deviceControll() {
-    if( windowSize( 'width' ) < 768 ) {
+    if (windowSize('width') < 768) {
       $('body').removeClass('desktop').removeClass('tablet').addClass('mobile');
     }
-    else if( windowSize( 'width' ) < 992 ){
+    else if (windowSize('width') < 992) {
       $('body').removeClass('mobile').removeClass('desktop').addClass('tablet');
     }
     else {
@@ -103,13 +103,13 @@
 
 
   function portfolioAnimationTextHeight() {
-    $('.section').each(function() {
+    $('.section').each(function () {
 
-      var actionDiv   = $(this),
-          actionId    = actionDiv.attr('data-heading'),
-          height      = actionDiv.find('.inner-container').height();
+      var actionDiv = $(this),
+        actionId = actionDiv.attr('data-heading'),
+        height = actionDiv.find('.inner-container').height();
 
-      $( actionId ).css({
+      $(actionId).css({
         'height': height
       })
 
@@ -118,7 +118,7 @@
 
 
 
-  $(window).on('load', function() {
+  $(window).on('load', function () {
 
     portfolioAnimationTextHeight();
     $('.home-section').addClass('active-animation');
@@ -127,21 +127,21 @@
 
 
 
-  $(window).on('resize', function() {
+  $(window).on('resize', function () {
 
     deviceControll();
     portfolioAnimationTextHeight();
-    fullscreen_home( '.home-section' );
+    fullscreen_home('.home-section');
 
   });
 
 
 
-  $(document).on('ready', function() {
+  $(document).on('ready', function () {
 
 
     deviceControll();
-    fullscreen_home( '.home-section' );
+    fullscreen_home('.home-section');
 
 
 
@@ -151,9 +151,9 @@
      * =============================================
      */
     $('body').jpreLoader({
-        preMainSection:     '#main-preloader',
-        prePerText:         '.preloader-percentage-text',
-        preBar:             '.preloader-bar',
+      preMainSection: '#main-preloader',
+      prePerText: '.preloader-percentage-text',
+      preBar: '.preloader-bar',
     });
 
     // $( '.main-preloader-inner' ).each(function() {
@@ -180,8 +180,8 @@
      * =======================================
      */
     var wow = new WOW({
-        animateClass: 'active',
-        offset:       100
+      animateClass: 'active',
+      offset: 100
     });
     wow.init();
 
@@ -193,18 +193,18 @@
      * Top Fixed Navbar
      * =======================================
      */
-    $(document).on('scroll', function() {
+    $(document).on('scroll', function () {
       var activeClass = 'navbar-home',
-          ActiveID        = '.main-navbar-top',
-          ActiveIDSub     = ".navbar-collapse",
-          scrollPos       = $(this).scrollTop();
+        ActiveID = '.main-navbar-top',
+        ActiveIDSub = ".navbar-collapse",
+        scrollPos = $(this).scrollTop();
 
-      if( scrollPos > ( $('.home-section').height() - 600 ) ) {
-        $( ActiveID ).addClass( activeClass );
+      if (scrollPos > ($('.home-section').height() - 600)) {
+        $(ActiveID).addClass(activeClass);
       } else {
-        $( ActiveID ).removeClass( activeClass );
-        $( ActiveIDSub ).removeClass( "show-nav" );
-        $( "button.nav-trigger" ).removeClass("nav-visible");
+        $(ActiveID).removeClass(activeClass);
+        $(ActiveIDSub).removeClass("show-nav");
+        $("button.nav-trigger").removeClass("nav-visible");
       }
     });
 
@@ -217,18 +217,18 @@
      */
     var TopOffsetId = '.navbar-brand';
     $('#js-navbar-menu').onePageNav({
-        currentClass: 'active',
-        scrollThreshold: 0.2, // Adjust if Navigation highlights too early or too late
-        scrollSpeed: 1000,
-        scrollOffset: Math.abs( $( TopOffsetId ).outerHeight() - 1 )
+      currentClass: 'active',
+      scrollThreshold: 0.2, // Adjust if Navigation highlights too early or too late
+      scrollSpeed: 1000,
+      scrollOffset: Math.abs($(TopOffsetId).outerHeight() - 1)
     });
 
     $('.btn-scroll a, a.btn-scroll').on('click', function (e) {
       e.preventDefault();
 
       var target = this.hash,
-          scrollOffset = Math.abs( $( TopOffsetId ).outerHeight() ),
-          $target = ( $(target).offset() || { "top": NaN }).top;
+        scrollOffset = Math.abs($(TopOffsetId).outerHeight()),
+        $target = ($(target).offset() || { "top": NaN }).top;
 
       $('html, body').stop().animate({
         'scrollTop': $target - scrollOffset
@@ -246,41 +246,41 @@
      * Main Navigarion Button Script
      * =============================================
      */
-    $('.nav-trigger').on('click', function() {
+    $('.nav-trigger').on('click', function () {
 
       var thisSection = $(this),
-          actionId    = $( thisSection.attr('data-target') );
+        actionId = $(thisSection.attr('data-target'));
 
-      if( thisSection.hasClass('nav-visible') ) {
+      if (thisSection.hasClass('nav-visible')) {
         thisSection.removeClass('nav-visible')
         actionId.removeClass('show-nav');
 
-        var setTime = setTimeout(function() {
+        var setTime = setTimeout(function () {
           actionId.fadeOut();
-        }, 500 );
+        }, 500);
 
-      }else {
+      } else {
 
         actionId.fadeIn(10);
         thisSection.addClass('nav-visible')
         actionId.addClass('show-nav');
-        
+
       }
     });
 
 
 
     var navigationItemHover = $('#fp-nav').find('li');
-    navigationItemHover.on('mouseenter', function() {
+    navigationItemHover.on('mouseenter', function () {
       var actionItem = $(this).find('.fp-tooltip');
       actionItem.fadeIn(100);
       $(this).addClass('show-text');
     });
-    navigationItemHover.on('mouseleave', function() {
+    navigationItemHover.on('mouseleave', function () {
       var actionItem = $(this).find('.fp-tooltip');
       $(this).removeClass('show-text');
 
-      setTimeout(function() {
+      setTimeout(function () {
         actionItem.fadeOut(10);
       }, 600);
     });
@@ -294,7 +294,7 @@
      * =============================================
      */
     var btnMask = $('.btn-mask, .btn-nav');
-    btnMask.each(function() {
+    btnMask.each(function () {
 
       $(this).append('<span class="view-all-link-mask"><span class="view-all-link-mask-text">' + $(this).html() + '</span></span>');
 
@@ -311,28 +311,28 @@
     $('.services-full-view').find('.services-details').fadeOut(10);
 
     var servicesButton = $('.btn-services');
-    servicesButton.on('click', function(el) {
+    servicesButton.on('click', function (el) {
       el.preventDefault();
 
-      var actionId        = $(this).attr('href'),
-          hideSection     = $(this).closest('.each-services-outer'),
-          parentSection   = $(this).closest('.services-section'),
-          sectionHeading  = parentSection.find('.section-header');
+      var actionId = $(this).attr('href'),
+        hideSection = $(this).closest('.each-services-outer'),
+        parentSection = $(this).closest('.services-section'),
+        sectionHeading = parentSection.find('.section-header');
 
       hideSection.addClass('active');
       sectionHeading.addClass('active');
 
-      setTimeout(function() {
+      setTimeout(function () {
         hideSection.fadeOut(10);
         sectionHeading.fadeOut(10);
-      }, 400 );
+      }, 400);
 
-      setTimeout(function() {
+      setTimeout(function () {
 
-        $( actionId ).fadeIn(10);
-        $( actionId ).addClass('active');
+        $(actionId).fadeIn(10);
+        $(actionId).addClass('active');
 
-      }, 550 );
+      }, 550);
 
     });
 
@@ -343,29 +343,29 @@
      * =============================================
      */
     var servicesBackButton = $('.btn-services-back');
-    servicesBackButton.on('click', function(el) {
+    servicesBackButton.on('click', function (el) {
       el.preventDefault();
 
-      var actionId        = $('.each-services-outer'),
-          hideSection     = $(this).closest('.services-details'),
-          parentSection   = $(this).closest('.services-section'),
-          sectionHeading  = parentSection.find('.section-header');
+      var actionId = $('.each-services-outer'),
+        hideSection = $(this).closest('.services-details'),
+        parentSection = $(this).closest('.services-section'),
+        sectionHeading = parentSection.find('.section-header');
 
       hideSection.removeClass('active');
 
-      setTimeout(function() {
+      setTimeout(function () {
         hideSection.fadeOut(10);
-      }, 400 );
+      }, 400);
 
-      setTimeout(function() {
+      setTimeout(function () {
 
-        $( actionId ).fadeIn(10);
-        $( actionId ).removeClass('active');
+        $(actionId).fadeIn(10);
+        $(actionId).removeClass('active');
 
         sectionHeading.fadeIn(10);
         sectionHeading.removeClass('active');
 
-      }, 550 );
+      }, 550);
 
     });
 
@@ -377,27 +377,27 @@
      */
     var portfolioWrapper = $(".portfolio-wrapper"); // client's message
     portfolioWrapper.owlCarousel({
-      singleItem :        true,
-      slideSpeed :        500,
-      paginationSpeed :   500,
-      autoPlay :          5000,
-      autoHeight :        false,
-      navigation:         false,
-      pagination:         true,
+      singleItem: true,
+      slideSpeed: 500,
+      paginationSpeed: 500,
+      autoPlay: 5000,
+      autoHeight: false,
+      navigation: false,
+      pagination: true,
       // afterAction : syncPosition,
       // autoHeight : true,
-      afterAction: function(el){
+      afterAction: function (el) {
         //remove class active
         this
-        .$owlItems
-        .removeClass('active');
+          .$owlItems
+          .removeClass('active');
 
         //add class active
         this
-        .$owlItems //owl internal $ object containing items
-        .eq(this.currentItem)
-        .addClass('active');
-     }
+          .$owlItems //owl internal $ object containing items
+          .eq(this.currentItem)
+          .addClass('active');
+      }
     });
 
 
@@ -406,25 +406,25 @@
      * Contact Form Style
      * =======================================
      */
-    $( '.form-control' ).each( function( inputEl ) {
+    $('.form-control').each(function (inputEl) {
 
       // in case the input is already filled..
-      if( $(this).val() !== '' ) {
+      if ($(this).val() !== '') {
         $(this).closest('.input-outer').addClass('input-filled');
       }
 
       // events:
-      $( this ).focus(function(){
+      $(this).focus(function () {
 
         $(this).closest('.input-outer').addClass('input-filled');
 
       });
 
-      $( this ).blur(function(){
+      $(this).blur(function () {
 
-          if( $(this).val() === '' ) {
-            $(this).closest('.input-outer').removeClass('input-filled');
-          }
+        if ($(this).val() === '') {
+          $(this).closest('.input-outer').removeClass('input-filled');
+        }
 
       });
 
@@ -439,7 +439,7 @@
      * CONTACT FORM 2
      * ============================
     */
-    $("#contact-form").on('submit', function(e) {
+    $("#contact-form").on('submit', function (e) {
       e.preventDefault();
       var success = $(this).find('.email-success'),
         failed = $(this).find('.email-failed'),
@@ -454,25 +454,25 @@
         message: $(this).find('.contact-message').val()
       };
 
-      if ( isValidEmail(data['email']) && (data['message'].length > 1) && (data['name'].length > 1) ) {
+      if (isValidEmail(data['email']) && (data['message'].length > 1) && (data['name'].length > 1)) {
         $.ajax({
           type: "POST",
           url: postUrl,
           data: data,
-          beforeSend: function() {
+          beforeSend: function () {
             loader.fadeIn(1000);
           },
-          success: function(data) {
+          success: function (data) {
             loader.fadeOut(1000);
             success.delay(500).fadeIn(1000);
             failed.fadeOut(500);
           },
-          error: function(xhr) { // if error occured
+          error: function (xhr) { // if error occured
             loader.fadeOut(1000);
             failed.delay(500).fadeIn(1000);
             success.fadeOut(500);
           },
-          complete: function() {
+          complete: function () {
             loader.fadeOut(1000);
           }
         });
@@ -489,7 +489,34 @@
 
   });
 
+  // function isVisible($el) {
+  //   var winTop = $(window).scrollTop();
+  //   var winBottom = winTop + $(window).height();
+  //   var elTop = $el.offset().top;
+  //   var elBottom = elTop + $el.height();
+  //   console.log("----------------------")
+  //   console.log("winTop:", winTop)
+  //   console.log("winBottom:", winBottom)
+  //   console.log("elTop:", elTop)
+  //   console.log("elBottom:", elBottom)
+  //   console.log("$(window).height():", $(window).height());
+  //   console.log("----------------------")
 
-} (jQuery) );
+  //   return ((elBottom <= winBottom) && (elTop >= winTop));
+  // }
+  // $(window).scroll(function () {
+  //   console.log("scroll")
+  //   console.log(isVisible($(".about-section")))
+  //   if ($(window).scrollTop() > 1000 && $(window).scrollTop() < 1600) {
+  //     console.log("animate")
+  //     $(".about-img").animate({ right: '250px' }, 1000);
+  //   }
+  // });
+  // TweenLite.to(".aboutImg", 5, {x:100});
+  // var homere = $.superscrollorama({paused:true});
+
+  // homere.addTween('.aboutImg', TweenMax.from( 
+  // 	$('.about-img'), 2, {css:{left:'500px'}, ease:Power4.easeInOut}));
+}(jQuery));
 
 

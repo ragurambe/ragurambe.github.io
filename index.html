@@ -58,8 +58,16 @@
       <script src="js/plagin-js/html5shiv.js"></script>
       <script src="js/plagin-js/respond.min.js"></script>
     <![endif]-->
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 280px;
+      }
+     
+    </style>
   </head>
-  <body class="style-1">
+  <body class="style-1 bg-overlay-color">
     <!-- Start: Preloader Section
         =================================== -->
     <div id="main-preloader" class="main-preloader white-background">
@@ -677,8 +685,8 @@
             - About Us PAGE 
         ====================================-->
     <div
-      class="section section-item combine-section hide-overlay overflow semi-dark-background"
-      id="about-section"
+      class="section section-item combine-section about-section hide-overlay 
+       overflow semi-dark-background" id="about-section"
     >
       <div class="inner-container about-section">
         <div class="container">
@@ -709,11 +717,12 @@
               <div class="each-services col-sm-6 col-xs-12">
                 <div class="overflow">
                   <div class="each-services-inner wow ">
-                    <img
-                      src="images/products/quinoa+salad.jpg"
+                    <!-- <div class="about-img"></div> -->
+                    <div class="aboutImg"><img
+                      src="images/background/eco-friendly-lifestyle.jpeg"
                       alt="about"
                       class="about-img"
-                    />
+                    /></div>
                   </div>
                 </div>
               </div>
@@ -1193,16 +1202,31 @@
                     </div>
                   </form>
                 </div>
-                <!-- /#testimonials-1 -->
+                <!-- /#contact-us-1 -->
               </div>
               <!-- End: .col-xs-12 -->
 
               <div class="clearfix"></div>
 
-              <div
-                class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 contact-footer"
-              >
-                <div class="row">
+              
+              <!-- End: .contact-footer -->
+            </div>
+            <!-- End: .row -->
+          </div>
+          <!-- End: .container -->
+        </div>
+        <!-- End: .inner-container -->
+      </div>
+    </div>
+    <!--End: 6th Section  
+            - CONTACT US PAGE
+        ====================================-->
+<!-- Start: Footer -->
+      <div class="section section-item footer-section dark-background hide-overlay overflow">
+        <div class="inner-container">
+            <div class="row">
+            <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 contact-footer wow">
+              <div class="row">
                   <div class="about col-sm-1 m-t-15">
                     <div class="overflow">
                       <div class="logo-outer wow">
@@ -1324,18 +1348,14 @@
                 </div>
                 <!-- End: .row -->
               </div>
-              <!-- End: .contact-footer -->
-            </div>
-            <!-- End: .row -->
-          </div>
-          <!-- End: .container -->
-        </div>
-        <!-- End: .inner-container -->
+              <div class="clearfix"></div>
+              <div class="col-md-12 col-sm-12 contact-footer-map wow">
+                <div id="map"></div>
+              </div>
+              </div>
+              </div>
       </div>
-    </div>
-    <!--End: 6th Section  
-            - CONTACT US PAGE
-        ====================================-->
+<!-- End: Footer-->
 
     <!-- SCRIPTS 
         ========================================-->
@@ -1343,10 +1363,36 @@
     <script src="js/plagin-js/preloader.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="js/plagin-js/plagin.js"></script>
+    <script src="js/TweenMax.min.js"></script>
+    <script src="js/jquery.superscrollorama.js"></script>
 
     <!-- Custom Script 
         ==========================================-->
     <script src="js/custom-scripts.js"></script>
     <!-- <script src="js/menu.js"></script> -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4T3fWzw4YvOSr9AeXy5hxEOge19RG2u8&callback=myMap&libraries=&v=weekly"
+      defer
+    ></script>
+    <script>
+        function myMap() {
+        var mapProp= {
+            center:new google.maps.LatLng(11.054555, 76.994284),
+            zoom:10,
+          };
+          var marker = new google.maps.Marker({
+                          position:new google.maps.LatLng(11.054555, 76.994284),
+                          size: new google.maps.Size(32, 38),
+                          scaledSize: new google.maps.Size(32, 38),
+                          labelOrigin: new google.maps.Point(9, 9),
+                          label:"Go!",
+                          animation: google.maps.Animation.DROP,
+                        });
+
+        var map = new google.maps.Map(document.getElementById("map"),mapProp);
+        marker.setMap(map);
+        }
+    </script>
   </body>
 </html>
